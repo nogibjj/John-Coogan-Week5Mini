@@ -1,8 +1,8 @@
 # Variables
 PYTHON := python3
 VENV := venv
-SRC_DIR := pythonproject/src
-TEST_DIR := pythonproject/tests
+SRC_DIR := sqlite-lab_John-Coogan/mylib
+TEST_DIR := sqlite-lab_John-Coogan
 REQUIREMENTS := requirements.txt
 
 # Phony targets
