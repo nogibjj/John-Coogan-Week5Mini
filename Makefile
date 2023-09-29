@@ -1,25 +1,38 @@
-install:
-	pip install --upgrade pip &&\
-		pip install -r requirements.txt
+# Variables
+PYTHON := python3
+VENV := venv
+SRC_DIR := pythonproject/src
+TEST_DIR := pythonproject/tests
+REQUIREMENTS := requirements.txt
 
-test:
-	python -m pytest -vv --cov=main --cov=mylib test_*.py
+# Phony targets
+.PHONY: all venv install test format lint clean
 
-format:	
-	black *.py 
+# Default target
+all: venv install test format lint
 
+# Create a virtual environment
+venv:
+	$(PYTHON) -m venv $(VENV)
+
+# Install project dependencies
+install: venv
+	$(VENV)/bin/pip install --upgrade pip -r  $(REQUIREMENTS)
+
+# Run unit tests
+test: 
+	$(VENV)/bin/pytest $(TEST_DIR)
+	$(VENV)/bin/pytest --nbval-lax $(SRC_DIR)
+	# nbval doesnt handle a strict test for formatted jupyter outputs well
+
+# Format code with Black
+format:
+	$(VENV)/bin/black $(SRC_DIR)
+
+# Lint code with Ruff
 lint:
-	#disable comment to test speed
-	#pylint --disable=R,C --ignore-patterns=test_.*?py *.py mylib/*.py
-	#ruff linting is 10-100X faster than pylint
-	ruff check *.py mylib/*.py
+	$(VENV)/bin/ruff check $(SRC_DIR)
 
-container-lint:
-	docker run --rm -i hadolint/hadolint < Dockerfile
-
-refactor: format lint
-
-deploy:
-	#deploy goes here
-		
-all: install lint test format deploy
+# Clean up generated files and virtual environment
+clean:
+	rm -rf $(VENV) __pycache__ .pytest_cache
