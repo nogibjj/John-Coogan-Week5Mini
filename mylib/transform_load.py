@@ -14,7 +14,9 @@ def load(dataset="../sqlite-lab_John-Coogan/data/game_data.csv"):
 
     # prints the full working directory and path
     print(os.getcwd())
-    payload = csv.reader(open(dataset, newline="", encoding="iso-8859-1"), delimiter=",")
+    payload = csv.reader(
+        open(dataset, newline="", encoding="iso-8859-1"), delimiter=","
+    )
     conn = sqlite3.connect("GameDB.db")
     c = conn.cursor()
     c.execute("DROP TABLE IF EXISTS GameDB")
