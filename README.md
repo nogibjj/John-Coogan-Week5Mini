@@ -1,3 +1,6 @@
+[![Test,Lint,Format](https://github.com/johncoogan53/sqlite-lab_John-Coogan/actions/workflows/cicd.yml/badge.svg)](https://github.com/johncoogan53/sqlite-lab_John-Coogan/actions/workflows/cicd.yml)
+
+
 ## SQLite ETL Command Line Tool
 ### Overview
 ![Alt text](<Project Architecture.png>)'
