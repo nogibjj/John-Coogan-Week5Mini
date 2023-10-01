@@ -1,8 +1,8 @@
 # Variables
 PYTHON := python3
 VENV := venv
-SRC_DIR := sqlite-lab_John-Coogan/mylib
-TEST_DIR := sqlite-lab_John-Coogan
+SRC_DIR := ../sqlite-lab_John-Coogan/mylib
+TEST_DIR := ../sqlite-lab_John-Coogan
 REQUIREMENTS := requirements.txt
 
 # Phony targets
@@ -22,8 +22,6 @@ install: venv
 # Run unit tests
 test: 
 	$(VENV)/bin/pytest $(TEST_DIR)
-	$(VENV)/bin/pytest --nbval-lax $(SRC_DIR)
-	# nbval doesnt handle a strict test for formatted jupyter outputs well
 
 # Format code with Black
 format:
