@@ -1,8 +1,8 @@
 # Variables
 PYTHON := python3
 VENV := venv
-SRC_DIR := ../sqlite-lab_John-Coogan/mylib
-TEST_DIR := ../sqlite-lab_John-Coogan
+SRC_DIR := ../John-Coogan-Week5mini/mylib
+TEST_DIR := ../John-Coogan-Week5mini
 REQUIREMENTS := requirements.txt
 
 # Phony targets
