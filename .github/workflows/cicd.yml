@@ -1,4 +1,4 @@
-name: Install
+name: Test,Lint,Format
 on: [push]
 jobs:
   build:
