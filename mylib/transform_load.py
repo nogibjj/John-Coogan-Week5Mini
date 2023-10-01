@@ -1,7 +1,9 @@
 """
 Transforms and Loads data into the local SQLite3 database
 Example:
-,general name,count_products,ingred_FPro,avg_FPro_products,avg_distance_root,ingred_normalization_term,semantic_tree_name,semantic_tree_node
+,general name,count_products,
+ingred_FPro,avg_FPro_products,avg_distance_root,
+ingred_normalization_term,semantic_tree_name,semantic_tree_node
 """
 import sqlite3
 import csv
@@ -21,7 +23,9 @@ def load(dataset="../sqlite-lab_John-Coogan/data/game_data.csv"):
     c = conn.cursor()
     c.execute("DROP TABLE IF EXISTS GameDB")
     c.execute(
-        "CREATE TABLE GameDB (Rank,Name, Platform, Publisher, Developer, Critic_Score, User_Score, Total_Shipped, Year)"
+        """CREATE TABLE GameDB 
+        (Rank,Name, Platform, Publisher, Developer, 
+        Critic_Score, User_Score, Total_Shipped, Year)"""
     )
     # insert
     c.executemany("INSERT INTO GameDB VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)", payload)

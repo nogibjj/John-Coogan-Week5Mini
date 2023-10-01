@@ -3,10 +3,11 @@ Test goes here
 
 """
 
-from mylib import extract, query,transform_load
+from mylib.query import query
 
 
-def test_query("SELECT Name FROM GameDB WHERE User_Score = (SELECT MAX(User_Score) FROM GameDB))"):
+def test_query():
+    assert query("SELECT Name FROM GameDB ORDER BY User_Score DESC, Critic_Score DESC LIMIT 2") == [('Name',), ('Super Mario Galaxy 2',)]
     
     pass
 def test_extract():

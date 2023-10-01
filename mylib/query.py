@@ -8,6 +8,7 @@ def query(query):
     conn = sqlite3.connect("GameDB.db")
     cursor = conn.cursor()
     cursor.execute(query)
-    print(cursor.fetchall())
+    q_result = cursor.fetchall()
+    print(q_result)
     conn.close()
-    return "Success"
+    return q_result
